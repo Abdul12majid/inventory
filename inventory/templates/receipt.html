@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+<table>
+	<tr>
+		<th>Item</th>
+		<th>Quantity</th>
+		<th>Price</th>
+	</tr>
+	{% for item, quantity, price in zip(items, quantities, total) %}
+	<tr>
+		<td>{{ item }}</td>
+		<td>{{ quantity }}</td>
+		<td>{{ price }}</td>
+	</tr>
+	{% endfor %}
+</table>
+<p>Total: {{ total }}</p>
+
+{% endblock %}
