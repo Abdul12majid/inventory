@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block message %}
+
+{{ message }}
+
+{% endblock %}
+
+{% block content %}
+</br>
+
+
+ <!-- Newsletter Start -->
+    <div class="container-fluid position-relative pt-5 wow fadeInUp" data-wow-delay="0.1s">
+        <center>
+        <div class="container">
+
+            <div class="bg-primary p-3">
+                <h3>Login Below</h3></br>
+                <form action="{% url 'login-user' %}" method=POST>
+                 {% csrf_token %}
+                <div class="mb-3">
+                    
+                    <input type="text" class="form-control" name="username" placeholder="Username" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                   
+                   <input type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+                       <input type = "submit" value="Login">
+                </form>
+                </br>
+                <i style="color:white;">Don't have an account ? Sign up <a href='www.me.com' style="color:blue;">here</a>.</i>
+            </div>      
+        </div>
+    </center>
+    </div>
+    </br></br>
+    <!-- Newsletter End -->
+
+{% endblock %}

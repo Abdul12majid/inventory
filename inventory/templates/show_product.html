@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block message %}
+
+ {{ message }}
+
+{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+
+<center><h4><b> {{ product.name }} </b></h4></center>
+</br>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>S/N</th>
+        <th>Name</th>
+        <th>Quantity in store</th>
+        <th>#Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    	
+      <tr>
+        <td>1.</td>      	
+        <td>{{ product.name }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.price }}</td>
+        <td><a href="{% url 'sell-product' product.id %}">sell</a> | <a href="{% url 'update-product' product.id %}">update</a></td>
+      </tr>
+      
+
+    </tbody>
+  </table></br>
+
+  {% endblock %}

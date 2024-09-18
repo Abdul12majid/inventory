@@ -1,0 +1,26 @@
+<!-- contact section -->
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% block message %}
+
+ {{ message }}
+
+{% endblock %}
+
+        <center>
+          <h3><u>Add Product to Store</u></h3></br>
+
+        <div class='container'>
+            <form action="{% url 'add-product' %}" method="POST" validate>
+              {% csrf_token %}
+              {{ form.as_p }}</br>
+              <input type="submit" value="Add Product">
+            </form>
+          
+        </div>
+      </center>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+<table class="table-bordered">
+	<tr>
+		<th>Quantity</th>
+		
+	</tr>
+	{% for receipt in all_receipt %}
+
+	
+	<tr>
+		<td>{% if receipt.r_quantity is not None %}
+		{{ receipt.r_quantity }}
+	       {% else %}
+
+	       {% endif %}
+        </td>
+		
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	{% endfor %}
+</table>
+<p>Total: total</p>
+
+{% endblock %}

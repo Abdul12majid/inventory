@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block message %}
+
+{{ message }}
+
+{% endblock %}
+
+{% block content %}
+</br></br>
+
+<center>
+
+<h1 class="text-black mb-4">Create Account</h1></br></br>
+
+<form action="{% url 'register-user' %}" method="POST">
+
+  {% csrf_token %}
+  {{ form.as_p }}
+
+   </br>
+   
+<div class="col-4">
+   <button class="btn btn-dark w-100 py-3" type="submit">Create Account</button>
+</div></br>
+  
+
+</form>
+
+
+{% endblock %}

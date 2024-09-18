@@ -1,0 +1,61 @@
+<!-- contact section -->
+{% extends 'base.html' %}
+
+{% block message %}
+
+ {{ message }}
+
+{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+
+<center><h2><b><u> ALL PRODUCTS </u></b></h2></center>
+</br></br>
+
+<table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>S/N</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Stock</th>
+        <th>#Price</th>
+        <th>Action</th>
+        <th>Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+    	{% for product in all_products %}
+      <tr>
+        <td>{{ forloop.counter }}</td>      	
+        <td>{{ product.name }}</td>
+        <td>{{ product.quantity }}</td>
+        <td><a href="{% url 'sell-product-stock' product.id %}">{% if product.stock <= product.reorder_level %}
+          <div style="background-color: skyblue;"><b>{{ product.stock }}</b></div>{% else %}
+        {{ product.stock }}
+        {% endif %}</a></td>
+        <td>{{ product.price }}</td>
+        <td><a href="{% url 'sell-product' product.id %}">sell</a>|<a href="{% url 'update-product' product.id %}">update</a></td> 
+        <td>{{ product.total_price }}</td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table></br></br> <a href="{% url 'print-receipt' %}">print receipt</a>
+
+<center>
+  <h5>Search product below</h5>
+  <div class="container">
+    
+    <form method="POST" action='' novalidate>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type='submit' value='Search'/>
+    </form>
+  </div>
+</center>
+
+  {% endblock %}
